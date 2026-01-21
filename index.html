@@ -180,9 +180,9 @@ h1{font-size:48px}
 <!-- 📸 GALLERY (تمت إضافة 3 صور جديدة) -->
 <div class="gallery">
     <img src="img1.jpg">
-    <img src="kitty1.jpg">
+    <img src="kitty3.jpg">
     <img src="cat1.jpg">
-    <img src="kitty2.jpg">
+    <img src="kitty4.jpg">
     <img src="cat2.jpg">
     <img src="img2.jpg">
     <img src="img3.jpg">
@@ -194,7 +194,7 @@ h1{font-size:48px}
     <source src="lana-lolita.mp3" type="audio/mpeg">
 </audio>
 
-<p style="font-size:26px;margin-top:40px;">✍️ Мохаммед 💗</p>
+<p style="font-size:26px;margin-top:40px;">✍️ Мохаммед or Momoo 💗</p>
 
 </div>
 
@@ -269,4 +269,44 @@ function fireworks(){
 </script>
 
 </body>
-    </html>
+</html>om()*Math.PI*2,s:Math.random()*3+1,l:120});
+        }
+    },800);
+    (function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        p.forEach((o,i)=>{
+            o.x+=Math.cos(o.a)*o.s;
+            o.y+=Math.sin(o.a)*o.s;
+            o.l--;
+            ctx.fillStyle="#ff69b4";
+            ctx.fillRect(o.x,o.y,3,3);
+            if(o.l<=0)p.splice(i,1);
+        });
+        requestAnimationFrame(draw);
+    })();
+}
+</script>
+
+</body>
+</html>       let y=Math.random()*canvas.height*.5;
+        for(let i=0;i<40;i++){
+            p.push({x,y,a:Math.random()*Math.PI*2,s:Math.random()*3+1,l:120,c:Math.random()>.5?"#ff69b4":"#b84bff"});
+        }
+    },800);
+    (function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        p.forEach((o,i)=>{
+            o.x+=Math.cos(o.a)*o.s;
+            o.y+=Math.sin(o.a)*o.s;
+            o.l--;
+            ctx.fillStyle=o.c;
+            ctx.fillRect(o.x,o.y,3,3);
+            if(o.l<=0)p.splice(i,1);
+        });
+        requestAnimationFrame(draw);
+    })();
+}
+</script>
+
+</body>
+</html>/html>
