@@ -1,1 +1,304 @@
-https://github.com/71nothing1nothing17-bit/birthday-site.git
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Изабелла 💗</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Comic Sans MS',cursive;
+    background:radial-gradient(circle at top,#ffe6f2,#ffd1dc,#ffb6c1);
+    text-align:center;
+    color:#ff1493;
+    overflow-x:hidden;
+}
+
+/* FIREWORKS */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:10;
+    pointer-events:none;
+}
+
+/* LOGIN */
+#login{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle at top,#3b235a,#1a0f2b);
+    overflow:hidden;
+}
+
+.login-card{
+    width:340px;
+    padding:30px 25px;
+    background:rgba(255,255,255,0.12);
+    border-radius:35px;
+    box-shadow:0 0 70px rgba(255,105,180,1);
+    backdrop-filter:blur(6px);
+    position:relative;
+    z-index:5;
+}
+
+/* صورة صفحة كلمة السر */
+.login-card img{
+    width:220px;
+    border-radius:30px;
+    margin-bottom:20px;
+    box-shadow:0 0 35px #ff69b4;
+}
+
+.login-title{
+    font-size:28px;
+    color:#ffd6ff;
+    margin-bottom:10px;
+}
+
+.login-text{
+    font-size:16px;
+    color:#ffb6ff;
+    margin-bottom:18px;
+}
+
+.login-card input{
+    width:90%;
+    padding:14px;
+    border-radius:30px;
+    border:none;
+    font-size:18px;
+    text-align:center;
+    background:#2b163f;
+    color:#ff69b4;
+}
+
+.login-card button{
+    margin-top:20px;
+    width:90%;
+    padding:15px;
+    border-radius:40px;
+    border:none;
+    font-size:20px;
+    background:linear-gradient(45deg,#ff69b4,#b84bff);
+    color:white;
+}
+
+/* BALLOONS LOGIN */
+.balloon{
+    position:fixed;
+    bottom:-120px;
+    font-size:110px;
+    animation:balloonUp 18s linear infinite;
+    opacity:0.95;
+    z-index:1;
+}
+
+@keyframes balloonUp{
+    from{transform:translateY(0)}
+    to{transform:translateY(-140vh)}
+}
+
+/* CONTENT */
+#content{
+    display:none;
+    padding:30px 15px;
+    position:relative;
+    z-index:5;
+}
+
+h1{font-size:48px}
+
+.message{
+    font-size:24px;
+    line-height:2;
+    margin:30px auto;
+    max-width:900px;
+    background:rgba(255,255,255,.65);
+    border-radius:35px;
+    padding:30px;
+}
+
+/* GALLERY */
+.gallery img{
+    width:180px;
+    border-radius:30px;
+    margin:12px;
+    box-shadow:0 0 30px rgba(255,20,147,1);
+}
+
+/* AFTER LOGIN EMOJIS */
+.after-emoji{
+    position:fixed;
+    bottom:-60px;
+    font-size:55px; /* 👈 كبيييير */
+    animation:emojiUp 7s linear infinite;
+    z-index:9; /* 👈 فوق كل حاجة */
+}
+
+@keyframes emojiUp{
+    from{transform:translateY(0);opacity:1}
+    to{transform:translateY(-130vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<!-- LOGIN -->
+<div id="login">
+    <div class="login-card">
+
+        <img src="login.jpg">
+
+        <div class="login-title">✨ Enter Password ✨</div>
+
+        <div class="login-text">
+            Ты — моё маленькое чудо,<br>
+            и я благодарен судьбе за тебя 💗
+        </div>
+
+        <input type="password" id="password" placeholder="Пароль 💕">
+
+        <button type="button" onclick="start()">🔓 Unlock</button>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<h1>🎂 С ДНЁМ РОЖДЕНИЯ, ИЗАБЕЛЛА 🎂</h1>
+
+<div class="message">
+С днём рождения, Изабелла 🎀💖🐱<br><br>
+В 27/1/2011 родилось самое прекрасное совпадение в моей жизни,<br>
+родилось розовое сердце, похожее на мечты,<br>
+и с тех пор мир стал мягче, потому что ты в нём 🌸✨<br><br>
+
+С каждым годом ты — моя любимая, моя принцесса,<br>
+моя маленькая кошечка, которая крадёт моё сердце одним взглядом 🐾💞<br><br>
+
+Я люблю тебя по количеству ударов сердца,<br>
+по количеству звёзд,<br>
+и по количеству улыбок, которые появляются, когда я вспоминаю тебя 💗😽<br><br>
+
+С днём рождения, моя душа 💕🎂<br><br>
+
+С каждым годом ты — благословение, которое не исчезает,<br>
+моя любовь, которая растёт со мной день за днём 🌷🐱💖
+</div>
+
+<div class="gallery">
+    <img src="img1.jpg">
+    <img src="kitty1.jpg">
+    <img src="cat1.jpg">
+    <img src="kitty2.jpg">
+    <img src="cat2.jpg">
+</div>
+
+<audio id="music" autoplay loop>
+    <source src="https://dl.dropboxusercontent.com/scl/fi/lolita.mp3">
+</audio>
+
+<p style="font-size:26px;margin-top:40px;">✍️ Мохаммед 💗</p>
+
+</div>
+
+<script>
+/* LOGIN */
+function start(){
+    if(password.value==="27lovekitty"){
+        login.style.display="none";
+        content.style.display="block";
+        music.play();
+        emojis();
+        fireworks();
+    }else{
+        alert("Неверный пароль 😿");
+    }
+}
+
+/* BALLOONS ON LOGIN */
+setInterval(()=>{
+    if(login.style.display!=="none"){
+        const b=document.createElement("div");
+        b.className="balloon";
+        b.innerHTML="🎈";
+        b.style.left=Math.random()*100+"vw";
+        document.body.appendChild(b);
+        setTimeout(()=>b.remove(),18000);
+    }
+},300);
+
+/* BIG EMOJIS AFTER LOGIN */
+function emojis(){
+    const icons=["💗","💕","💖","🐱","😻","🎀","🌸","🐾"];
+    setInterval(()=>{
+        if(content.style.display==="block"){
+            const e=document.createElement("div");
+            e.className="after-emoji";
+            e.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+            e.style.left=Math.random()*100+"vw";
+            document.body.appendChild(e);
+            setTimeout(()=>e.remove(),7000);
+        }
+    },120);
+}
+
+/* FIREWORKS */
+function fireworks(){
+    const canvas=document.getElementById("fireworks");
+    const ctx=canvas.getContext("2d");
+    canvas.width=innerWidth;
+    canvas.height=innerHeight;
+    let p=[];
+    setInterval(()=>{
+        let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height*0.5;
+        for(let i=0;i<40;i++){
+            p.push({x,y,a:Math.random()*Math.PI*2,s:Math.random()*3+1,l:120});
+        }
+    },800);
+    (function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        p.forEach((o,i)=>{
+            o.x+=Math.cos(o.a)*o.s;
+            o.y+=Math.sin(o.a)*o.s;
+            o.l--;
+            ctx.fillStyle="#ff69b4";
+            ctx.fillRect(o.x,o.y,3,3);
+            if(o.l<=0)p.splice(i,1);
+        });
+        requestAnimationFrame(draw);
+    })();
+}
+</script>
+
+</body>
+</html>   let x=Math.random()*canvas.width;
+        let y=Math.random()*canvas.height*.5;
+        for(let i=0;i<40;i++){
+            p.push({x,y,a:Math.random()*Math.PI*2,s:Math.random()*3+1,l:120,c:Math.random()>.5?"#ff69b4":"#b84bff"});
+        }
+    },800);
+    (function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        p.forEach((o,i)=>{
+            o.x+=Math.cos(o.a)*o.s;
+            o.y+=Math.sin(o.a)*o.s;
+            o.l--;
+            ctx.fillStyle=o.c;
+            ctx.fillRect(o.x,o.y,3,3);
+            if(o.l<=0)p.splice(i,1);
+        });
+        requestAnimationFrame(draw);
+    })();
+}
+</script>
+
+</body>
+</html>
