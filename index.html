@@ -11,58 +11,36 @@ body{
     background:radial-gradient(circle at top,#ffe6f2,#ffd1dc,#ffb6c1);
     text-align:center;
     color:#ff1493;
-    overflow-x:hidden;
+    overflow:hidden;
 }
-
-/* FIREWORKS */
 canvas{
     position:fixed;
-    top:0;
-    left:0;
+    top:0;left:0;
     z-index:10;
     pointer-events:none;
 }
-
-/* LOGIN */
 #login{
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     background:radial-gradient(circle at top,#3b235a,#1a0f2b);
-    overflow:hidden;
 }
-
 .login-card{
     width:340px;
     padding:30px 25px;
     background:rgba(255,255,255,0.12);
     border-radius:35px;
     box-shadow:0 0 70px rgba(255,105,180,1);
-    backdrop-filter:blur(6px);
-    position:relative;
-    z-index:5;
 }
-
 .login-card img{
     width:220px;
     border-radius:30px;
     margin-bottom:20px;
     box-shadow:0 0 35px #ff69b4;
 }
-
-.login-title{
-    font-size:28px;
-    color:#ffd6ff;
-    margin-bottom:10px;
-}
-
-.login-text{
-    font-size:16px;
-    color:#ffb6ff;
-    margin-bottom:18px;
-}
-
+.login-title{font-size:28px;color:#ffd6ff}
+.login-text{font-size:16px;color:#ffb6ff;margin-bottom:18px}
 .login-card input{
     width:90%;
     padding:14px;
@@ -73,7 +51,6 @@ canvas{
     background:#2b163f;
     color:#ff69b4;
 }
-
 .login-card button{
     margin-top:20px;
     width:90%;
@@ -84,30 +61,7 @@ canvas{
     background:linear-gradient(45deg,#ff69b4,#b84bff);
     color:white;
 }
-
-/* BALLOONS */
-.balloon{
-    position:fixed;
-    bottom:-120px;
-    font-size:110px;
-    animation:balloonUp 18s linear infinite;
-    opacity:0.95;
-    z-index:1;
-}
-
-@keyframes balloonUp{
-    from{transform:translateY(0)}
-    to{transform:translateY(-140vh)}
-}
-
-/* CONTENT */
-#content{
-    display:none;
-    padding:30px 15px;
-    position:relative;
-    z-index:5;
-}
-
+#content{display:none;padding:30px 15px}
 h1{font-size:48px}
 
 .message{
@@ -120,7 +74,6 @@ h1{font-size:48px}
     padding:30px;
 }
 
-/* GALLERY */
 .gallery img{
     width:180px;
     border-radius:30px;
@@ -128,7 +81,6 @@ h1{font-size:48px}
     box-shadow:0 0 30px rgba(255,20,147,1);
 }
 
-/* AFTER LOGIN EMOJIS */
 .after-emoji{
     position:fixed;
     bottom:-60px;
@@ -136,10 +88,47 @@ h1{font-size:48px}
     animation:emojiUp 7s linear infinite;
     z-index:9;
 }
-
 @keyframes emojiUp{
     from{transform:translateY(0);opacity:1}
     to{transform:translateY(-130vh);opacity:0}
+}
+
+#surpriseBtn{
+    margin-top:25px;
+    padding:18px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:40px;
+    color:white;
+    cursor:pointer;
+    animation:rainbow 3s linear infinite;
+    box-shadow:0 0 30px white;
+}
+@keyframes rainbow{
+    0%{background:red}
+    20%{background:orange}
+    40%{background:yellow}
+    60%{background:green}
+    80%{background:blue}
+    100%{background:purple}
+}
+
+/* 🐱 CAT */
+#cat{
+    position:fixed;
+    width:90px;
+    z-index:12;
+    transition:all 3s linear;
+}
+.cat-heart{
+    position:fixed;
+    font-size:28px;
+    animation:heartUp 3s linear forwards;
+    z-index:11;
+}
+@keyframes heartUp{
+    from{opacity:1;transform:translateY(0)}
+    to{opacity:0;transform:translateY(-120px)}
 }
 </style>
 </head>
@@ -148,34 +137,23 @@ h1{font-size:48px}
 
 <canvas id="fireworks"></canvas>
 
-<!-- LOGIN -->
 <div id="login">
     <div class="login-card">
         <img src="login.jpg">
         <div class="login-title">✨ Enter Password ✨</div>
-        <div class="login-text">
-            Ты — моё маленькое чудо,<br>
-            и я благодарен судьбе за тебя 💗
-        </div>
+        <div class="login-text">Ты — моё маленькое чудо 💗</div>
         <input type="password" id="password" placeholder="Пароль 💕">
-        <button type="button" onclick="start()">🔓 Unlock</button>
+        <button onclick="start()">🔓 Unlock</button>
     </div>
 </div>
 
-<!-- CONTENT -->
 <div id="content">
 
 <h1>🎂 С ДНЁМ РОЖДЕНИЯ, ИЗАБЕЛЛА 🎂</h1>
 
-<div class="message">
-С днём рождения, Изабелла 🎀💖🐱<br><br>
-В 27/1/2011 родилось самое прекрасное совпадение в моей жизни,<br>
-родилось розовое сердце, похожее на мечты,<br>
-и с тех пор мир стал мягче, потому что ты в нём 🌸✨<br><br>
-С каждым годом ты — моя любимая, моя принцесса,<br>
-моя маленькая кошечка, которая крадёт моё сердце одним взглядом 🐾💞<br><br>
-С днём рождения, моя душа 💕🎂
-</div>
+<div class="message" id="typedMessage"></div>
+
+<button id="surpriseBtn" onclick="surprise()">🎉 SURPRISE 🎉</button>
 
 <div class="gallery">
     <img src="img1.jpg">
@@ -188,84 +166,124 @@ h1{font-size:48px}
     <img src="img4.jpg">
 </div>
 
-<!-- 🎵 SOUNDS -->
-<audio id="birthdaySound">
-    <source src="birthday.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="music" loop>
-    <source src="lana-lolita.mp3" type="audio/mpeg">
-</audio>
+<audio id="birthdaySound" src="birthday.mp3"></audio>
+<audio id="boomSound" src="boom.mp3"></audio>
+<audio id="music" src="lana-lolita.mp3" loop></audio>
 
 <p style="font-size:26px;margin-top:40px;">✍️ Mohammed or Momoo 💜</p>
-
 </div>
 
+<img id="cat" src="cat.png">
+
 <script>
-function start(){
-    if(password.value==="27lovekitty"){
-        login.style.display="none";
-        content.style.display="block";
+const text = `В день 27/1/2011 🗓️✨
+это был не обычный день…
+это был день, когда мир решил улыбнуться 🌸
+день, в который родилась Изабелла 👶💖
+и с этого момента, сам того не зная,
+началась история любви, написанная сердцем раньше слов 💞📖
 
-        const birthday = document.getElementById("birthdaySound");
-        const lana = document.getElementById("music");
+Изабелла 🤍
+одно лишь твоё имя — уже целая история,
+и когда я зову тебя, моё сердце опережает мой голос 💓
 
-        // 🎊 صوت عيد الميلاد
-        birthday.play().catch(()=>{});
+с того дня, как ты вошла в мою жизнь,
+утро стало прекраснее ☀️
+ночь — спокойнее 🌙
+а дни обрели другой вкус… вкус твоего присутствия 💫
 
-        // 🎶 بعده أغنية لانا
-        birthday.onended = () => {
-            lana.volume = 0.7;
-            lana.play().catch(()=>{});
-        };
+Я люблю тебя во всех своих буднях 🌷
+люблю первое сообщение утром 📱💌
+и последнее слово перед сном 😴💗
+люблю твой смех, который крадёт моё сердце 😂💞
+и люблю даже твою грусть,
+потому что она учит меня быть ближе к тебе
+и заботиться о тебе ещё сильнее 🥹🤍
 
-        emojis();
-        fireworks();
-    }else{
-        alert("Неверный пароль 😿");
-    }
+Изабелла…
+ты стала моим утренним кофе ☕💭
+моей искренней молитвой 🤲💖
+и мечтой, за которую я держусь, даже когда устаю 🌈
+ты стала чем-то постоянным в мире, который меняется каждый день 🕊️
+
+В твой день рождения 🎉🎂
+и в память о 27/1/2011 🌸🗓️
+я хочу сказать тебе,
+как я благодарен за тот момент, когда ты родилась,
+потому что он — причина всех прекрасных чувств,
+которые я испытываю сегодня 💝
+
+Я желаю тебе жизни, полной радости 😍
+улыбки, которая никогда не исчезает ✨
+сердца, которое никогда не будет разбито 🤍
+и мечт, которые сбываются одна за другой 🌟
+
+и я хочу быть тем человеком,
+который держит тебя за руку 🤝
+берегёт твоё сердце 💞
+и разделяет с тобой все твои дни,
+даже самые простые и маленькие 🥹💗
+
+Изабелла…
+я люблю тебя любовью, которая растёт со временем ⏳💘
+любовью, на которую не влияет расстояние 🌍
+ни обстоятельства 🌧️
+ни что-либо ещё
+я люблю тебя просто потому, что это ты… и всё 💖
+
+🎂💝 С днём рождения, Изабелла 💝🎂
+день твоего рождения стал праздником для моего сердца,
+а твоё присутствие навсегда изменило мою жизнь 🌹✨
+я люблю тебя больше, чем слова,
+больше, чем эмодзи,
+и больше, чем ты можешь себе представить 😭💗💗💗`;
+
+function typeText(){
+    let i=0;
+    const el=document.getElementById("typedMessage");
+    el.innerHTML="";
+    const t=setInterval(()=>{
+        el.innerHTML+=text[i++];
+        if(i>=text.length) clearInterval(t);
+    },35);
 }
 
-setInterval(()=>{
-    if(login.style.display!=="none"){
-        const b=document.createElement("div");
-        b.className="balloon";
-        b.innerHTML="🎈";
-        b.style.left=Math.random()*100+"vw";
-        document.body.appendChild(b);
-        setTimeout(()=>b.remove(),18000);
-    }
-},300);
+function start(){
+    if(password.value==="pinkdream"){
+        login.style.display="none";
+        content.style.display="block";
+        birthdaySound.play();
+        setTimeout(()=>boomSound.play(),1500);
+        birthdaySound.onended=()=>music.play();
+        typeText();emojis();fireworks();startCat();
+    }else alert("Неверный пароль 😿");
+}
 
 function emojis(){
-    const icons=["💗","💕","💖","💋","😻","🎀","🌸","👸"];
+    const icons=["💗","💕","💖","🎀","🌸","👑"];
     setInterval(()=>{
-        if(content.style.display==="block"){
-            const e=document.createElement("div");
-            e.className="after-emoji";
-            e.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-            e.style.left=Math.random()*100+"vw";
-            document.body.appendChild(e);
-            setTimeout(()=>e.remove(),7000);
-        }
-    },120);
+        const e=document.createElement("div");
+        e.className="after-emoji";
+        e.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+        e.style.left=Math.random()*100+"vw";
+        document.body.appendChild(e);
+        setTimeout(()=>e.remove(),7000);
+    },150);
+}
+
+function surprise(){
+    boomSound.play();
 }
 
 function fireworks(){
-    const canvas=document.getElementById("fireworks");
-    const ctx=canvas.getContext("2d");
-    canvas.width=innerWidth;
-    canvas.height=innerHeight;
-    let p=[];
+    const c=document.getElementById("fireworks"),ctx=c.getContext("2d");
+    c.width=innerWidth;c.height=innerHeight;let p=[];
     setInterval(()=>{
-        let x=Math.random()*canvas.width;
-        let y=Math.random()*canvas.height*0.5;
-        for(let i=0;i<40;i++){
-            p.push({x,y,a:Math.random()*Math.PI*2,s:Math.random()*3+1,l:120});
-        }
+        let x=Math.random()*c.width,y=Math.random()*c.height*0.5;
+        for(let i=0;i<50;i++)p.push({x,y,a:Math.random()*6,s:3,l:120});
     },800);
-    (function draw(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+    (function d(){
+        ctx.clearRect(0,0,c.width,c.height);
         p.forEach((o,i)=>{
             o.x+=Math.cos(o.a)*o.s;
             o.y+=Math.sin(o.a)*o.s;
@@ -274,8 +292,23 @@ function fireworks(){
             ctx.fillRect(o.x,o.y,3,3);
             if(o.l<=0)p.splice(i,1);
         });
-        requestAnimationFrame(draw);
+        requestAnimationFrame(d);
     })();
+}
+
+function startCat(){
+    const cat=document.getElementById("cat");
+    setInterval(()=>{
+        cat.style.left=Math.random()*(innerWidth-100)+"px";
+        cat.style.top=Math.random()*(innerHeight-100)+"px";
+        const h=document.createElement("div");
+        h.className="cat-heart";
+        h.innerHTML="💗";
+        h.style.left=cat.style.left;
+        h.style.top=cat.style.top;
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),3000);
+    },3000);
 }
 </script>
 
